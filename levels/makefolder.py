@@ -3,9 +3,14 @@ import os
 # define root dorectory
 wd = os.getcwd()
 
-for i in range (1, 26):
+folderAmnt = 25 # amount of folders to make (only supports below 100 for now)
+folderStartWith = 'lvl_' # will add number after
+
+filesToAdd = ['notes.txt', 'extra.txt'] # files to add to each folder
+
+for i in range (1, folderAmnt - 1):
     # generate folder name
-    folderName = 'lvl_'
+    folderName = folderStartWith
     if i < 10:
         folderName += '0'
     folderName += str(i)
@@ -15,8 +20,9 @@ for i in range (1, 26):
     os.chdir(folderName)
 
     # make file
-    f = open('score.txt', 'w')
-    f.close()
+    for item in filesToAdd:
+        f = open(item, 'w')
+        f.close()
 
     # return to root directory
     os.chdir(wd)
