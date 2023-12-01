@@ -9,35 +9,55 @@ def getInput():
     input = f.read().splitlines()
     f.close()
     return input
-
-def wordtonum(input):
-    output = []
-    for item in input:
-        tmpvar = item
-        for num in numsSpelled:
-            if num in item:
-                item = item.replace(num, str(numsSpelled.index(num) + 1))
-                print("replaced something " + item + " " + num + " " + str(numsSpelled.index(num) + 1))
-        output.append(item)
-    return output
  
 def main():
     print
     input = getInput()
     
-    input = wordtonum(input)
-    
     print("Input: (scrabled data)")
     print(input)
+    
     for line in input:
-        firstDone = False
+        print(line)
         vals = []
         chars = [*line]
-        for item in chars:
-            if item in nums:
-                vals.append(item)
         
-        calibrationValues.append(int(vals[0] + vals[len(vals) - 1]))
+        # get first
+        firstDone = False
+        shrtline = ""
+        for i in range(0, len(chars)):
+            shrtline = shrtline + chars[i]
+            for number in numsSpelled:
+                if number in shrtline and not firstDone:
+                    vals.append(numsSpelled.index(number) + 1)
+                    print("num " + number + " in " + shrtline + "   " + str(numsSpelled.index(number) + 1))
+                    firstDone = True
+                if str(numsSpelled.index(number) + 1) in shrtline and not firstDone:
+                    vals.append(numsSpelled.index(number) + 1)
+                    print("num " + str(numsSpelled.index(number) + 1) + " in " + shrtline + "   " + str(numsSpelled.index(number) + 1))
+                    firstDone = True
+        
+        # get last
+        lastDone = False
+        shrtline = ""
+        for i in range(len(chars) - 1, 0 - 1, -1):
+            shrtline = chars[i] + shrtline
+            for number in numsSpelled:
+                if number in shrtline and not lastDone:
+                    vals.append(numsSpelled.index(number) + 1)
+                    print("num " + number + " in " + shrtline + "   " + str(numsSpelled.index(number) + 1))
+                    lastDone = True
+                if str(numsSpelled.index(number) + 1) in shrtline and not lastDone:
+                    vals.append(numsSpelled.index(number) + 1)
+                    print("num " + str(numsSpelled.index(number) + 1) + " in " + shrtline + "   " + str(numsSpelled.index(number) + 1))
+                    lastDone = True
+        
+        print(int(str(vals[0]) + str(vals[1])))
+        print("\n\n")
+        
+        calibrationValues.append(int(str(vals[0]) + str(vals[1])))
+        
+
 
     print("\n\nValues stripped from scrabled data:")
     print(calibrationValues)
