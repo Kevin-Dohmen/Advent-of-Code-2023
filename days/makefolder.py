@@ -4,9 +4,9 @@ import os
 wd = os.getcwd()
 
 folderAmnt = 25 # amount of folders to make (only supports below 100 for now)
-folderStartWith = 'lvl_' # will add number after
+folderStartWith = 'day_' # will add number after
 
-filesToAdd = ['notes.txt', 'extra.txt'] # files to add to each folder
+filesToAdd = ['notes.txt', 'input.txt'] # files to add to each folder
 
 for i in range (1, folderAmnt - 1):
     # generate folder name
