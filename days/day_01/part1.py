@@ -13,10 +13,8 @@ def main():
     print
     input = getInput()
     
-    print("Input: (scrabled data)")
-    print(input)
+    print(f"Input: (scrabled data)\n{input}")
     for line in input:
-        firstDone = False
         vals = []
         chars = [*line]
         for item in chars:
@@ -25,12 +23,9 @@ def main():
         
         calibrationValues.append(int(vals[0] + vals[len(vals) - 1]))
 
-    print("\n\nValues stripped from scrabled data:")
-    print(calibrationValues)
+    print(f"\n\nValues stripped from scrabled data:\n{calibrationValues}")
     
     calibrationSum = sum(calibrationValues)
-
-    print("\n\nCalibrationValue:")
-    print(calibrationSum)
+    print(f"\n\nCalibrationValue: {calibrationSum}")
 
 main()
