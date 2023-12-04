@@ -22,7 +22,7 @@ def main():
     
     for y in range(len(input)):
         stringTrue = False
-        cString = ""
+        
         for x in range(len(input[y])):
             cCharacter = input[y][x]
             if cCharacter in nums:
@@ -38,6 +38,12 @@ def main():
                                 print(f"character {cCharacter} at {x+1}:{y+1} is adjacent to {checkChar} at {xC+1}:{yC+1}")
                                 stringTrue = True
             else:
+                if stringTrue == True:
+                    print(f"cString = {cString}")
+                    validValues.append(int(cString))
+                stringTrue = False
+                cString = ""
+            if x == len(input[y]) - 1:
                 if stringTrue == True:
                     print(f"cString = {cString}")
                     validValues.append(int(cString))
